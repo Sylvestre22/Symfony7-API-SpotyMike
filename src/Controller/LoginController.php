@@ -24,7 +24,7 @@ class LoginController extends AbstractController
         $this->repository = $entityManager->getRepository(User::class);
     }
 
-    #[Route('/register', name: 'user_post', methods: 'POST')]
+    #[Route('/register', name: 'register_post', methods: 'POST')]
     public function create(Request $request, UserPasswordHasherInterface $passwordHash): JsonResponse
     {
 
@@ -41,11 +41,22 @@ class LoginController extends AbstractController
         $this->entityManager->persist($user);
         $this->entityManager->flush();
 
+        $parameters = $request->getContent();
+        parse_str($parameters, $data);
+
+        $explodeData = explode(",", $data['avatar']);
+        if (count($explodeData) == 2) {
+
+            $file = base64_decode("ouezhfoiejziopfcjeipjEPZOJPFEKZPOFKEZPofkepozkfOEIZJFPIEZJIJMOUHOPIHOIHpoihmohmohMOHmoIHmoiHmoihMoihmoihpoUHpouHpouHpouHNpoUIHnpçOHYpobIHBpoHpboHpOIHJBpOUhbpOUhbPOHhmohMOHmoIHmoiHmoihMoihmoihpoUHpouHpouHpouHNpoUIHnpçOHYpobIHBpoHpboHpOIHJBpOUhbpOUhbPOHhmohMOHmoIHmoiHmoihMoihmoihpoUHpouHpouHpouHNpoUIHnpçOHYpobIHBpoHpboHpOIHJBpOUhbpOUhbPOHhmohMOHmoIHmoiHmoihMoihmoihpoUHpouHpouHpouHNpoUIHnpçOHYpobIHBpoHpboHpOIHJBpOUhbpOUhbPOHhmohMOHmoIHmoiHmoihMoihmoihpoUHpouHpouHpouHNpoUIHnpçOHYpobIHBpoHpboHpOIHJBpOUhbpOUhbPOHhmohMOHmoIHmoiHmoihMoihmoihpoUHpouHpouHpouHNpoUIHnpçOHYpobIHBpoHpboHpOIHJBpOUhbpOUhbPOHhmohMOHmoIHmoiHmoihMoihmoihpoUHpouHpouHpouHNpoUIHnpçOHYpobIHBpoHpboHpOIHJBpOUhbpOUhbPOHhmohMOHmoIHmoiHmoihMoihmoihpoUHpouHpouHpouHNpoUIHnpçOHYpobIHBpoHpboHpOIHJBpOUhbpOUhbPOHhmohMOHmoIHmoiHmoihMoihmoihpoUHpouHpouHpouHNpoUIHnpçOHYpobIHBpoHpboHpOIHJBpOUhbpOUhbPOHhmohMOHmoIHmoiHmoihMoihmoihpoUHpouHpouHpouHNpoUIHnpçOHYpobIHBpoHpboHpOIHJBpOUhbpOUhbPOHhmohMOHmoIHmoiHmoihMoihmoihpoUHpouHpouHpouHNpoUIHnpçOHYpobIHBpoHpboHpOIHJBpOUhbpOUhbPOHhmohMOHmoIHmoiHmoihMoihmoihpoUHpouHpouHpouHNpoUIHnpçOHYpobIHBpoHpboHpOIHJBpOUhbpOUhbPOHhmohMOHmoIHmoiHmoihMoihmoihpoUHpouHpouHpouHNpoUIHnpçOHYpobIHBpoHpboHpOIHJBpOUhbpOUhbPOHhmohMOHmoIHmoiHmoihMoihmoihpoUHpouHpouHpouHNpoUIHnpçOHYpobIHBpoHpboHpOIHJBpOUhbpOUhbPOHhmohMOHmoIHmoiHmoihMoihmoihpoUHpouHpouHpouHNpoUIHnpçOHYpobIHBpoHpboHpOIHJBpOUhbpOUhbPOHhmohMOHmoIHmoiHmoihMoihmoihpoUHpouHpouHpouHNpoUIHnpçOHYpobIHBpoHpboHpOIHJBpOUhbpOUhbPOHhmohMOHmoIHmoiHmoihMoihmoihpoUHpouHpouHpouHNpoUIHnpçOHYpobIHBpoHpboHpOIHJBpOUhbpOUhbPOHmoiuhmihmoihmhmohMOHmoIHmoiHmoihMoihmoihpoUHpouHpouHpouHNpoUIHnpçOHYpobIHBpoHpboHpOIHJBpOUhbpOUhbPOHhmohMOHmoIHmoiHmoihMoihmoihpoUHpouHpouHpouHNpoUIHnpçOHYpobIHBpoHpboHpOIHJBpOUhbpOUhbPOHhmohMOHmoIHmoiHmoihMoihmoihpoUHpouHpouHpouHNpoUIHnpçOHYpobIHBpoHpboHpOIHJBpOUhbpOUhbPOHhmohMOHmoIHmoiHmoihMoihmoihpoUHpouHpouHpouHNpoUIHnpçOHYpobIHBpoHpboHpOIHJBpOUhbpOUhbPOHhmohMOHmoIHmoiHmoihMoihmoihpoUHpouHpouHpouHNpoUIHnpçOHYpobIHBpoHpboHpOIHJBpOUhbpOUhbPOHhmohMOHmoIHmoiHmoihMoihmoihpoUHpouHpouHpouHNpoUIHnpçOHYpobIHBpoHpboHpOIHJBpOUhbpOUhbPOHhmohMOHmoIHmoiHmoihMoihmoihpoUHpouHpouHpouHNpoUIHnpçOHYpobIHBpoHpboHpOIHJBpOUhbpOUhbPOHhmoihpuihpiuhpiuhhmohMOHmoIHmoiHmoihMoihmoihpoUHpouHpouHpouHNpoUIHnpçOHYpobIHBpoHpboHpOIHJBpOUhbpOUhbPOHhmohMOHmoIHmoiHmoihMoihmoihpoUHpouHpouHpouHNpoUIHnpçOHYpobIHBpoHpboHpOIHJBpOUhbpOUhbPOHhmohMOHmoIHmoiHmoihMoihmoihpoUHpouHpouHpouHNpoUIHnpçOHYpobIHBpoHpboHpOIHJBpOUhbpOUhbPOHhmohMOHmoIHmoiHmoihMoihmoihpoUHpouHpouHpouHNpoUIHnpçOHYpobIHBpoHpboHpOIHJBpOUhbpOUhbPOHhmohMOHmoIHmoiHmoihMoihmoihpoUHpouHpouHpouHNpoUIHnpçOHYpobIHBpoHpboHpOIHJBpOUhbpOUhbPOHmhumouhpiughpiughpiugiytdfcuktg749823H0J083JpzeoKFPOKJEZPFJEZO");
+            $chemin = $this->getParameter('upload_directory') . '/' . $user->getEmail();
+            mkdir($chemin);
+            file_put_contents($chemin . '/file.png', $file);
+        }
+
         return $this->json([
             'isNotGoodPassword' => ($passwordHash->isPasswordValid($user, 'Zoubida')),
             'isGoodPassword' => ($passwordHash->isPasswordValid($user, $password)),
             'user' => $user->serializer(),
-            'path' => 'src/Controller/UserController.php',
         ]);
     }
 
